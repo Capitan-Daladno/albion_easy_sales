@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update]
 
   # GET /users
   def index
@@ -10,10 +10,6 @@ class UsersController < ApplicationController
   def show
   end
 
-  # GET /users/new
-  def new
-    @user = User.new
-  end
 
   # GET /users/1/edit
   def edit
@@ -39,12 +35,6 @@ class UsersController < ApplicationController
     end
   end
 
-  # DELETE /users/1
-  def destroy
-    @user.destroy
-    redirect_to users_url, notice: 'User was successfully destroyed.'
-  end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
@@ -53,6 +43,6 @@ class UsersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def user_params
-      params.fetch(:user, {})
+      params.require(:user).permit(:name, :money)
     end
 end
