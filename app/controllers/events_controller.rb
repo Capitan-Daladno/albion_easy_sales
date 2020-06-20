@@ -2,12 +2,10 @@ class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
 
   # GET /events
-  def index
-    @events = Event.all
-  end
 
   # GET /events/1
   def show
+    @event = Event.find(params[:id])
   end
 
   # GET /events/new
@@ -17,6 +15,7 @@ class EventsController < ApplicationController
 
   # GET /events/1/edit
   def edit
+    render :edit
   end
 
   # POST /events
@@ -51,6 +50,6 @@ class EventsController < ApplicationController
     end
 
     def event_params
-      params.require(:event).permit(:title, :datetime, :decription, :event_money)
+      params.require(:event).permit(:title, :datetime, :decription, :event_money, :user_id)
     end
 end
