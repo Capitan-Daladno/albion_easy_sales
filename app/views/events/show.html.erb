@@ -1,6 +1,19 @@
 <p id="notice"><%= notice %></p>
 
-
+<div class="col-md-4">
+  <div class="event-owner">
+    <h4>Продает:</h4>
+      <p>Amalon</p>
+  </div>
+  <div class="event-members">
+    <h4>Участники:</h4>
+    <div>
+      <p>
+      <%= Event.first.member %>
+      </p>
+    </div>
+  </div>
+</div>
 
 
 <%= link_to 'Edit', edit_event_path(@event) %> |

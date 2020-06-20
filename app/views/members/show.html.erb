@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<div class="event-subscription-form">
+  <h4>Я пойду:</h4>
+  <div>
+    <%= render partial: 'members/form', locals: {
+      member: @member || @event.members.build
+    } %>
+  </div>
+</div>
+
+<%= render partial: 'members/member',
+  collection: @event.members.except(@member) %>
+
+<%= form_for [@event, member] do |f| %>
+    <%= render partial: 'partials/form_errors', locals: {model: member} %>
+
+
+        <div class="form-group">
+          <%= f.label :user_name %>
+          <%= f.text_field :user_name, class: 'form-control' %>
+        </div>
+
+
+
+    <div class="actions">
+      <%= f.submit 'Подписаться', class: 'btn btn-primary' %>
+    </div>
+<% end %>
+
+
+<%= link_to 'Edit', edit_member_path(@member) %> |
+<%= link_to 'Back', members_path %>

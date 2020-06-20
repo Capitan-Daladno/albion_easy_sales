@@ -6,6 +6,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def count
+    @@users.size
+  end
+
 
   # GET /users/1/edit
   def edit

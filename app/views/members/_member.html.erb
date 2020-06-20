@@ -1,0 +1,7 @@
+<span class="member">
+  <% if member.user.present? %>
+    <%= render partial: 'users/user', object: member.user %>
+  <% else %>
+    <em><%= member.name %></em>
+  <% end %>
+</span>

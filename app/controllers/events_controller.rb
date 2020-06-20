@@ -6,6 +6,7 @@ class EventsController < ApplicationController
   # GET /events/1
   def show
     @event = Event.find(params[:id])
+    @member = @event.member.build(params[:member])
   end
 
   # GET /events/new
