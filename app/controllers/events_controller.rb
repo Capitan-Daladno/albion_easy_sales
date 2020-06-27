@@ -1,24 +1,35 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
 
-  # GET /events
 
-  # GET /events/1
   def show
     @event = Event.find(params[:id])
   end
 
-  # GET /events/new
   def new
     @event = Event.new
   end
 
-  # GET /events/1/edit
   def edit
     render :edit
   end
 
-  # POST /events
+  def update
+
+  end
+
+  def add_money_to_user
+    @event = Event.find(params[:id])
+    @users = @event.users
+    if @event.status = nil
+      event.users.each do |user|
+        @money_for_users.to_i + @user_money.to_i
+      end
+    else
+      @user_money
+    end
+  end
+
   def create
     @event = Event.new(event_params)
 
@@ -29,7 +40,7 @@ class EventsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /events/1
+
   def update
     if @event.update(event_params)
       redirect_to @event, notice: 'Event was successfully updated.'
@@ -38,7 +49,7 @@ class EventsController < ApplicationController
     end
   end
 
-  # DELETE /events/1
+
   def destroy
     @event.destroy
     redirect_to events_url, notice: 'Event was successfully destroyed.'
@@ -50,6 +61,6 @@ class EventsController < ApplicationController
     end
 
     def event_params
-      params.require(:event).permit(:title, :datetime, :decription, :event_money, :user_id)
+      params.require(:event).permit(:title, :datetime, :decription, :event_money)
     end
 end
