@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+<% @users = User.all %>
+
+<div class="col-md-8">
+  <div class="text-left">
+    <h1><%= @event.title %></h1>
+    <h3><%= @event.datetime %></h3>
+    <h3><%= @event.description %></h3>
+    <h2><%= @event.event_money %></h2>
+  </div>
+  <%= link_to "Редактировать", edit_event_path(@event), class: 'btn btn-primary'%>
+</div>
+
+
+<div class="col-md-4">
+  <div class="row">
+    <ul class="users">
+      <% @event.users.each do |user| %>
+    <li>
+      <%= user.name %>
+    </li>
+    <% end %>
+    </ul>
+  </div>
+</div>

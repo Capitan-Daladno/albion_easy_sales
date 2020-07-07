@@ -1,9 +1,12 @@
 <div class=container>
-  <div class="col-md-4">
+    <div class="col-md-4">
     <%= render partial: 'users/user', collection: @users %>
+    <h4>Всего пользователей: <%= User.count %></h4>
   </div>
   <div class="col-md-8">
+    <%= link_to "Создать событие", new_event_path(@events), class: 'btn btn-primary' %>
     <%= render partial: 'events/event', collection: @events %>
   </div>
 </div>
+
 
