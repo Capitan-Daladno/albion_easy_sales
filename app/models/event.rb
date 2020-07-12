@@ -11,12 +11,6 @@ class Event < ApplicationRecord
   validates :title, presence: true, length: {maximum: 32}
   validates :datetime, presence: true
 
-  def initialize (title, money) # "Конструктор"
-    @title = title
-    @event_money = event_money.to_i
-    @money_for_users = event_money / event.users.count
-  end
-
   def sold!(event, user)
     if event.status != true
       event.users.each do |user|

@@ -1,17 +1,20 @@
-<%= form_with(model: user, local: true) do |form| %>
-  <% if user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+<%= form_for(@user) do |f| %>
 
-      <ul>
-        <% user.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+  <div class="col-sm-6 col-md-4">
+    <div class="form-group">
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'form-control' %>
     </div>
-  <% end %>
 
-  <div class="actions">
-    <%= form.submit %>
+    <div class="form-group">
+      <%= f.label :money %>
+      <%= f.text_field :money, class: 'form-control' %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit 'Сохранить', class: 'btn btn-primary' %>
+      или <%= link_to 'вернуться', :back %>
+    </div>
   </div>
+
 <% end %>

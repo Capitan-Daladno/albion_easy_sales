@@ -7,6 +7,7 @@
     <h3><%= @event.datetime %></h3>
     <h3><%= @event.description %></h3>
     <h2><%= @event.event_money %></h2>
+    <h2><%= @event.status %></h2>
   </div>
   <%= link_to "Редактировать", edit_event_path(@event), class: 'btn btn-primary'%>
 </div>
@@ -14,6 +15,11 @@
 
 <div class="col-md-4">
   <div class="row">
+    <p>Каждому: <% if @event.users.count != 0 %></p>
+      <%= @event.event_money / @event.users.count %>
+      <% else %>
+      <% nil %>
+    <% end %>
     <ul class="users">
       <% @event.users.each do |user| %>
     <li>

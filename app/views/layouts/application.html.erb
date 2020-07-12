@@ -22,7 +22,10 @@
         </button>
         <a class="navbar-brand" href="http://localhost:3000/events/">AlbionEasySales</a>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
-
+          <ul class="nav navbar-nav">
+            <li><%= link_to 'Создать пользователя', new_user_path, class: 'btn' %></li>
+            <li><%= link_to 'Создать событие', new_event_path, class: 'btn' %></li>
+          </ul>
         </div>
       </div>
     </div>

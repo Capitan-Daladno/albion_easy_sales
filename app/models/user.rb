@@ -6,9 +6,4 @@ class User < ApplicationRecord
   validates :name, uniqueness: true
   validates :name, confirmation: { case_sensitive: false }
 
-  def initialize (user_name, user_money) # "Конструктор"
-    @user_name = user_name
-    @user_money = user_money.to_i
-  end
-
 end
