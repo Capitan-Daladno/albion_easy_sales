@@ -23,6 +23,12 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
   end
 
+  def add
+    new_user = User.where(name: params[:addusertoevent])
+    event.users << new_user
+    redirect_to @event, notice: 'Event was successfully updated.'
+  end
+
   def update
     if @event.update(event_params)
       @event.sold!(@event)

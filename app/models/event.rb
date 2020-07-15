@@ -24,4 +24,8 @@ class Event < ApplicationRecord
       end
     end
   end
+
+  def add_user_to_event(event)
+    event.users << user.name(params[:addusertoevent])
+  end
 end
