@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :set_event, only: [:show, :edit, :update]
   skip_before_action :verify_authenticity_token, only: [:create]
 
   def show
@@ -37,11 +37,6 @@ class EventsController < ApplicationController
     else
       render :edit
     end
-  end
-
-  def destroy
-    @event.destroy
-    redirect_to events_url, notice: 'Event was successfully destroyed.'
   end
 
   private
