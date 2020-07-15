@@ -11,22 +11,17 @@ class Event < ApplicationRecord
   validates :title, presence: true, length: {maximum: 32}
   validates :datetime, presence: true
 
-  def sold!(event, user)
-    if event.status != true
+  def sold!(event)
+    if event.status == true
       event.users.each do |user|
-        user.money.to_i += @money_for_users.to_i
+        user.money += (event.event_money / event.users.count).to_i
+      user.save!
       end
-      event.update_attribute(:status, true)
-    else
+    elsif event.status == false
       event.users.each do |user|
-        user.money.to_i -= @money_for_users.to_i
+        user.money -= (event.event_money / event.users.count).to_i
+        user.save!
       end
-      event.update_attribute(:status, false)
     end
-  end
-
-  def archive!
-    self.archived = true
-    save
   end
 end

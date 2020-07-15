@@ -23,16 +23,14 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
   end
 
-
   def update
     if @event.update(event_params)
+      @event.sold!(@event)
       redirect_to @event, notice: 'Event was successfully updated.'
     else
       render :edit
     end
   end
-
-
 
   def destroy
     @event.destroy
@@ -45,7 +43,7 @@ class EventsController < ApplicationController
     end
 
     def event_params
-      params.require(:event).permit(:title, :datetime, :decription, :event_money)
+      params.require(:event).permit(:title, :datetime, :decription, :event_money, :status)
     end
 
 end
