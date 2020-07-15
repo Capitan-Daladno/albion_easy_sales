@@ -1,15 +1,10 @@
 class UsersController < ApplicationController
   before_action only: [:show, :edit, :update]
 
-
-
-  # GET /users/1
   def show
     @user = User.find(params[:id])
   end
 
-
-  # GET /users/1/edit
   def edit
     render :edit
   end
@@ -18,7 +13,6 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  # POST /users
   def create
     @user = User.new(user_params)
 
@@ -29,7 +23,6 @@ class UsersController < ApplicationController
     end
   end
 
-  # PATCH/PUT /users/1
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
@@ -40,9 +33,6 @@ class UsersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-
-    # Only allow a trusted parameter "white list" through.
     def user_params
       params.require(:user).permit(:name, :money)
     end
