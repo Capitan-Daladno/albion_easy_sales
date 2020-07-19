@@ -4,9 +4,9 @@ class User < ApplicationRecord
 
   validates :name, presence: true
   validates :name, uniqueness: true
-  validates :name, confirmation: { case_sensitive: false }
+ # validates :name, confirmation: { case_sensitive: false }
 
-  def give_out
+  def give_out!(user)
     user.money == 0
     user.save!
   end
