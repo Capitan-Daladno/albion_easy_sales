@@ -16,7 +16,10 @@ class Event < ApplicationRecord
     end
   end
 
-  def add_user_to_event(event)
-    event.users << user.name(params[:addusertoevent])
+  def self.add_user_to_event(event, user)
+    Rails.logger.debug "KEK"
+    Rails.logger.debug user.inspect
+    event.users << user
   end
+
 end

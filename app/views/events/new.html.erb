@@ -30,3 +30,18 @@
   </div>
 
 <% end %>
+
+<div class="col-sm-6 col-md-4">
+
+  <%= form_with model: @user do |user_form| %>
+    <%= user_form.collection_select(:user_id, User.all, :id, :name) %>
+    <% if user_form = nil %>
+      <%= user_form.collection_select(:user_id, User.all, :id, :name) %>
+    <% else %>
+      <%= options_from_collection_for_select(User.all, :id, :name) %>
+    <% end %>
+  <% end %>
+
+  <%= options_from_collection_for_select(User.all, :id, :name) %>
+  <%= collection_select(:user, :user_id, User.all, :id, :name) %>
+</div>

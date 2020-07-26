@@ -11,10 +11,12 @@
   <%= link_to "Редактировать", edit_event_path(@event), class: 'btn btn-primary'%>
 </div>
 
+
+
 <div class="col-md-4">
   <div class="row">
-    <p>Каждому: <% if @event.users.count != 0 %></p>
-      <%= @event.event_money / @event.users.count %>
+    <% if @event.users.count != 0 %>
+      <p>Каждому по: <%= @event.event_money / @event.users.count %></p>
       <% else %>
       <% nil %>
     <% end %>

@@ -2,8 +2,9 @@ Rails.application.routes.draw do
   root "events#index"
 
   resources :events
+    post '/events/:id/edit', to: 'users#create'
   resources :users  do
-    post 'user#edit', to: 'user#give_out!'
-  end
+    put 'giveout', on: :member
 
+  end
 end

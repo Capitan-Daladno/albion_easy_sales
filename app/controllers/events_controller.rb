@@ -19,18 +19,7 @@ class EventsController < ApplicationController
     if @event.save
       redirect_to root_path, notice: 'Event was successfully created.'
     else
-      @user = User.new(user_params)
-
-      respond_to do |format|
-        if @user.save
-          format.html { redirect_to root_path, notice: 'User was successfully created.' }
-          format.js
-          format.json { render json: @user, status: :created, location: @user }
-        else
-          format.html { render action: "new" }
-          format.json { render json: @user.errors, status: :unprocessable_entity }
-        end
-      end
+      nil
     end
   end
 
