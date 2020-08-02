@@ -4,17 +4,20 @@
 
 <div class="col-md-4">
   <div class="row">
-    <p>Каждому: <% if @event.users.count != 0 %></p>
-      <%= @event.event_money / @event.users.count %>
+    <p>Каждому: <% if @event.users.count == 0 || @event.users == nil %></p>
+        <% nil %>
+      <% elsif @event.event_money == nil || @event.event_money == 0 %>
+        <% nil %>
       <% else %>
-      <% nil %>
+        <%= @event.event_money / @event.users.count %>
     <% end %>
     <ul class="users">
-      <%= form_with model: @user do |form| %>
-        <%= form.label :name %><br>
-        <%= form.text_field :name %>
-        <%= form.submit %>
+
+      <%= form_tag(add_user_to_event_path, method: :post) do %>
+        <%= text_field_tag :addusertoevent, params[:name], placeholder: "Введите имя" %>
+        <%= submit_tag 'Добавить', class: 'btn btn-primary' %>
       <% end %>
+
       <% @event.users.each do |user| %>
     <li>
       <%= user.name %>

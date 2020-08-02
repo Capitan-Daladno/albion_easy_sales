@@ -4,10 +4,7 @@
       <h3><%= link_to user.name, user %></h3>
     </div>
     <div class="col-md-2">
-      <h3><%= user.money %></h3>
-    </div>
-    <div class="col-md-4">
-      <%= button_to '1', giveout_user_path(user), method: :put %>
+      <h3><%= button_to user.money, giveout_user_path(user), method: :put, class: 'btn' %></h3>
     </div>
   </div>
 </div>

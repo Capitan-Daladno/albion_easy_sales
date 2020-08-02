@@ -15,10 +15,10 @@
 
 <div class="col-md-4">
   <div class="row">
-    <% if @event.users.count != 0 %>
-      <p>Каждому по: <%= @event.event_money / @event.users.count %></p>
+    <% if @event.users.count == 0 || @event.users == nil %>
+        <% nil %>
       <% else %>
-      <% nil %>
+        <p>Каждому по: <%= @event.event_money / @event.users.count %></p>
     <% end %>
     <ul class="users">
       <% @event.users.each do |user| %>

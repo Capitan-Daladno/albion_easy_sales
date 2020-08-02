@@ -37,13 +37,25 @@ class EventsController < ApplicationController
     end
   end
 
-  # Отдельно
+  def add_user_to_event
+    @event = Event.find(params[:id])
+    user_test_name = params[:addusertoevent]
+    u1 = User.find_by name: user_test_name
 
-  def add
-    new_user = User.where(name: params[:addusertoevent])
-    event.users << new_user
-    redirect_to @event, notice: 'Event was successfully updated.'
+    case @event.add_user_to_event(@event, u1, user_test_name)
+    when "already_was" then redirect_to edit_event_url, notice: 'Пользователь уже был добавлен'
+    when "success_added" then redirect_to edit_event_url, notice: 'Пользователь успешно добавлен'
+    when "success_create_add" then redirect_to edit_event_url, notice: "Пользователь создан и добавлен"
+    when "error_name" then redirect_to edit_event_url, notice: "Ошибка. Пользователь, либо существует, либо поле ввода пусто."
+    when "undefined_error" then redirect_to edit_event_url, notice: "Такой пользователь уже существует"
+    else redirect_to edit_event_url, notice: "что-то пошло не так"
+    end
+
   end
+
+
+
+  # Отдельно
 
   private
     def set_event
