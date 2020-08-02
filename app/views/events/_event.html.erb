@@ -5,10 +5,10 @@
         <div class="event-description">
           <h3><%= link_to event.title, event %></h3>
           <h3><%= event.event_money %></h3>
-          <p>Каждому: <% if event.users.count != 0 %></p>
-          <%= event.event_money / event.users.count %>
+          <% if event.users.count == 0 || event.event_money == nil %>
+            <% nil %>
           <% else %>
-          <% nil %>
+            <p>Каждому:</p> <%= event.event_money / event.users.count %>
           <% end %>
           <p>Кол-во участников: <%= event.users.count %></p>
           <% event.users.each do |user| %>

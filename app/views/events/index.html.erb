@@ -1,9 +1,5 @@
 <div class=container>
     <div class="col-md-4">
-      <%= form_with model: @user do |form| %>
-        <%= form.text_field :name %>
-        <%= form.submit 'Добавить', class: 'btn btn-primary' %>
-      <% end %>
     <%= render partial: 'users/user', collection: @users %>
     <h4>Всего пользователей: <%= User.count %></h4>
   </div>
