@@ -4,6 +4,7 @@ class Event < ApplicationRecord
 
   validates :title, presence: true, length: {maximum: 32}
   validates :datetime, presence: true
+  validates :event_money, length: {maximum: 12}
 
   def sold!(event)
     if event.status == true
