@@ -17,7 +17,7 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     if @event.save
-      redirect_to edit_event_path, notice: 'Добавьте участников'
+      redirect_to edit_event_path(@event)
     else
       render :new
     end
@@ -30,7 +30,7 @@ class EventsController < ApplicationController
   # Здесь добавлен вызов метода sold!
   def update
     if @event.update(event_params)
-        @event.sold!(@event)
+      @event.sold!(@event)
       redirect_to @event, notice: 'Event was successfully updated.'
     else
       render :edit
@@ -39,15 +39,14 @@ class EventsController < ApplicationController
 
   def add_user_to_event
     @event = Event.find(params[:id])
-    user_test_name = params[:addusertoevent]
-    u1 = User.find_by name: user_test_name
+    user_name_to_event = params[:addusertoevent]
 
-    case @event.add_user_to_event(@event, u1, user_test_name)
+    case @event.add_user_to_event2(@event, user_name_to_event)
     when "already_was" then redirect_to edit_event_url, notice: 'Пользователь уже был добавлен'
     when "success_added" then redirect_to edit_event_url, notice: 'Пользователь успешно добавлен'
     when "success_create_add" then redirect_to edit_event_url, notice: "Пользователь создан и добавлен"
-    when "error_name" then redirect_to edit_event_url, notice: "Ошибка. Пользователь, либо существует, либо поле ввода пусто."
-    when "undefined_error" then redirect_to edit_event_url, notice: "Такой пользователь уже существует"
+    when "empty_field" then redirect_to edit_event_url, notice: "Поле ввода пусто. Введите имя пользователя"
+    when "error_name" then redirect_to edit_event_url, notice: "Ошибка имени."
     else redirect_to edit_event_url, notice: "что-то пошло не так"
     end
 

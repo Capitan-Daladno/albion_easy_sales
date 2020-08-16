@@ -40,4 +40,31 @@ class Event < ApplicationRecord
       "undefined_error"
     end
   end
+
+  def add_user_to_event2(event, user_name_to_event)
+    user_name_to_event = user_name_to_event.delete(" ?!:;.,()«»<>\"\-").downcase.titleize
+    u1 = User.find_by name: user_name_to_event
+
+    if u1 == nil? || user_name_to_event != ""
+      if u1 == nil
+        user = User.new
+        user.name = user_name_to_event
+        if user.valid?
+          user.save!
+          event.users << user
+          "success_create_add"
+        else
+          "empty_field"
+        end
+      elsif User.exists?(:name => user_name_to_event) && ((event.users.find_by name: user_name_to_event) == nil)
+        event.users << u1
+        "success_added"
+      else
+        "already_was"
+      end
+    else
+      "error_name"
+    end
+  end
+
 end
