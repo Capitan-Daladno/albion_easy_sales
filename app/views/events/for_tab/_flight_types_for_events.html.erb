@@ -1,0 +1,44 @@
+<div id="tabs">
+  <!-- Кнопки -->
+  <ul class="tabs-nav">
+    <li><a href="#tab-1">Актуальные (последние 10 дней)</a></li>
+    <li><a href="#tab-2">В очереди</a></li>
+    <li><a href="#tab-3">Продано</a></li>
+  </ul>
+
+  <!-- Контент -->
+  <div class="tabs-items">
+    <div class="tabs-item" id="tab-1">
+      <%= render partial: 'events/event', collection: @events %>
+      <p>123</p>
+    </div>
+    <div class="tabs-item" id="tab-2">
+
+    </div>
+    <div class="tabs-item" id="tab-3">
+      <strong>Текст вкладки №3</strong>
+    </div>
+  </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+$(function() {
+  var tab = $('#tabs .tabs-items > div');
+  tab.hide().filter(':first').show();
+
+  // Клики по вкладкам.
+  $('#tabs .tabs-nav a').click(function(){
+    tab.hide();
+    tab.filter(this.hash).show();
+    $('#tabs .tabs-nav a').removeClass('active');
+    $(this).addClass('active');
+    return false;
+  }).filter(':first').click();
+
+  // Клики по якорным ссылкам.
+  $('.tabs-target').click(function(){
+    $('#tabs .tabs-nav a[href=' + $(this).data('id')+ ']').click();
+  });
+});
+</script>
