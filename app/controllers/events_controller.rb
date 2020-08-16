@@ -41,7 +41,7 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     user_name_to_event = params[:addusertoevent]
 
-    case @event.add_user_to_event2(@event, user_name_to_event)
+    case @event.add_user_to_event(@event, user_name_to_event)
     when "already_was" then redirect_to edit_event_url, notice: 'Пользователь уже был добавлен'
     when "success_added" then redirect_to edit_event_url, notice: 'Пользователь успешно добавлен'
     when "success_create_add" then redirect_to edit_event_url, notice: "Пользователь создан и добавлен"
