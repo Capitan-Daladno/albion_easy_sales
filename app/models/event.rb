@@ -29,8 +29,6 @@ class Event < ApplicationRecord
           user.save!
           event.users << user
           "success_create_add"
-        else
-          "empty_field"
         end
       elsif User.exists?(:name => user_name_to_event) && ((event.users.find_by name: user_name_to_event) == nil)
         event.users << u1

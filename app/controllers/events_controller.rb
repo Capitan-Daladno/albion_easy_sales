@@ -1,10 +1,7 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update]
-  skip_before_action :verify_authenticity_token, only: [:create]
 
-  include ActiveModel::Dirty
 
-  define_attribute_methods :status
 
   def show
     @event = Event.find(params[:id])
