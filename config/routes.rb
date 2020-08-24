@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+  devise_for :sellers
   root "events#index"
 
   resources :events

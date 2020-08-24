@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
+  before_action :authenticate_seller!, except: [:show, :index]
   before_action :set_event, only: [:show, :edit, :update]
-
 
 
   def show
@@ -49,17 +49,14 @@ class EventsController < ApplicationController
 
   end
 
-
-
-  # Отдельно
-
   private
-    def set_event
-      @event = Event.find(params[:id])
-    end
 
-    def event_params
-      params.require(:event).permit(:title, :datetime, :decription, :event_money, :status)
-    end
+  def set_event
+    @event = Event.find(params[:id])
+  end
+
+  def event_params
+    params.require(:event).permit(:title, :datetime, :decription, :event_money, :status)
+  end
 
 end

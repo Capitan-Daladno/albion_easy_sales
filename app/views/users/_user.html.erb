@@ -1,10 +1,18 @@
 <div class=container>
   <div class="col-md-6">
     <div class="col-md-4">
-      <h3><%= link_to user.name, user %></h3>
+      <% if seller_signed_in? %>
+        <h3><%= link_to user.name, user %></h3>
+      <% else %>
+        <h3><%= user.name %></h3>
+       <% end %>
     </div>
     <div class="col-md-2">
-      <h3><%= button_to user.money, giveout_user_path(user), method: :put, class: 'btn' %></h3>
+      <% if seller_signed_in? %>
+        <h3><%= button_to user.money, giveout_user_path(user), method: :put, class: 'btn' %></h3>
+      <% else %>
+        <h3><%= user.money %></h3>
+      <% end %>
     </div>
   </div>
 </div>
