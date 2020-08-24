@@ -13,13 +13,18 @@ gem 'twitter-bootstrap-rails'
 
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 
-gem 'uglifier', '~> 2.7', '>= 2.7.2'
-
 gem 'bootsnap', '>= 1.4.2', require: false
+
+# gems for_heroku
+
+gem 'uglifier', '~> 2.7', '>= 2.7.2'
+gem 'rails_12factor'
+
 
 group :production do
   gem 'pg'
 end
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'sqlite3', '~> 1.4'
