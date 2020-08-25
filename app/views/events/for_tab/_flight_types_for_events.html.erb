@@ -9,7 +9,20 @@
   <!-- Контент -->
   <div class="tabs-items">
     <div class="tabs-item" id="tab-1">
+<table class="table">
+  <thead>
+    <tr>
+      <th>Дата</th>
+      <th>Название</th>
+      <th>Кол-во участников</th>
+      <th>Статус</th>
+      <th>Деньги</th>
+    </tr>
+  </thead>
+  <tbody>
       <%= render partial: 'events/event', collection: @events %>
+  </tbody>
+</table>
       <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     </div>
     <div class="tabs-item" id="tab-2">

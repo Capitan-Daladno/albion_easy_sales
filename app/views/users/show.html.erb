@@ -7,9 +7,21 @@
         <div class="col-md-4">
       <h3><%= @user.money %></h3>
     </div>
-
   </div>
-    <div class="col-md-8">
-      <%= render partial: 'events/event', collection: @user.events %>
-    </div>
+  <div class="col-md-8">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Дата</th>
+          <th>Название</th>
+          <th>Кол-во участников</th>
+          <th>Статус</th>
+          <th>Деньги</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render partial: 'events/event', collection: @user.events %>
+      </tbody>
+    </table>
+  </div>
 </div>
