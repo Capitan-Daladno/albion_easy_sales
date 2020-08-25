@@ -1,16 +1,5 @@
-<div id="tabs">
-  <!-- Кнопки -->
-  <ul class="tabs-nav">
-    <li><a href="#tab-1">Актуальные (последние 10 дней)</a></li>
-    <li><a href="#tab-2">В очереди</a></li>
-    <li><a href="#tab-3">Продано</a></li>
-  </ul>
-
-  <!-- Контент -->
-  <div class="tabs-items">
-    <div class="tabs-item" id="tab-1">
 <table class="table">
-  <thead>
+  <thead class="thead-light">
     <tr>
       <th>Дата</th>
       <th>Название</th>
@@ -23,15 +12,6 @@
       <%= render partial: 'events/event', collection: @events %>
   </tbody>
 </table>
-      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    </div>
-    <div class="tabs-item" id="tab-2">
-      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    </div>
-    <div class="tabs-item" id="tab-3">
-      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    </div>
-  </div>
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>

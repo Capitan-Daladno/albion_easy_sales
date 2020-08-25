@@ -1,11 +1,17 @@
 <tr>
-    <td><small><%= l event.datetime, format: :short %></small></td>
+  <td><small><%= l event.datetime, format: :short %></small></td>
+  <% if seller_signed_in? %>
     <td><%= link_to event.title, event %></td>
-    <td><%= event.users.count %></td>
-    <td><% if event.status == true %>
-        Продано
-        <% else %>
-        <% end %></td>
-    <td><%= event.event_money %></td>
+  <% else %>
+    <td><%= event.title %></td>
+  <% end %>
+  <td><%= event.users.count %></td>
+  <td>
+    <% if event.status == true %>
+      Продано
+    <% else %>
+    <% end %>
+    </td>
+  <td><%= event.event_money %></td>
 </tr>
 

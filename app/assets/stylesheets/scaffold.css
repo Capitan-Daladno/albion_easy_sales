@@ -1,5 +1,5 @@
 body {
-  background-color: #fff;
+  background-color: #121212;
   color: #333;
   margin: 33px;
 }
@@ -8,6 +8,7 @@ body, p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
+  color: #6c757d!important;
 }
 
 pre {
@@ -44,6 +45,10 @@ div.actions {
 
 #notice {
   color: green;
+}
+
+.navbar {
+  background-color: #121212;
 }
 
 .field_with_errors {
