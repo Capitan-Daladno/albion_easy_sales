@@ -1,24 +1,18 @@
-# README
+Приложение создано для упрощения продаж в компьютерной игре Albion Online.
+Тестовый вариант задеплоин на heroku: https://albion-easy-sales.herokuapp.com/events/
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Сценарий создания события (продавец):
+Продавец (seller) создает событие (event) и добавляет в него участников (user).
 
-Things you may want to cover:
+Сценарий завершения продажи (продавец):
+После завершения продажи, продавец вносит сумму в поле event_money и меняет статус события.
+В итоге: участникам на баланс прибавляются средства.
 
-* Ruby version
+Сценарий получения средств (участник):
+Участник открывает сайт и видит сколько денег у него на счету.
+Обращается к продавцу или казначею, чтобы получает средства.
+Получает средства.
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Сценарий выдачи средств (продавец):
+К продавцу обращается участник.
+Продавец выдает средства участнику и обнуляет баланс участника на сайте.
