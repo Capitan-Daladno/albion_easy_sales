@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
-  before_action :authenticate_seller!, except: [:show, :index]
-  before_action :set_event, only: [:show, :edit, :update]
+  before_action :authenticate_seller!, except: %i[show index]
+  before_action :set_event, only: %i[show edit update]
 
   def show
     @event = Event.find(params[:id])
@@ -38,14 +38,13 @@ class EventsController < ApplicationController
     user_name_to_event = params[:addusertoevent]
 
     case @event.add_user_to_event(@event, user_name_to_event)
-    when "already_was" then redirect_to edit_event_url, notice: 'Пользователь уже был добавлен'
-    when "success_added" then redirect_to edit_event_url, notice: 'Пользователь успешно добавлен'
-    when "success_create_add" then redirect_to edit_event_url, notice: "Пользователь создан и добавлен"
-    when "empty_field" then redirect_to edit_event_url, notice: "Поле ввода пусто. Введите имя пользователя"
-    when "error_name" then redirect_to edit_event_url, notice: "Ошибка имени."
-    else redirect_to edit_event_url, notice: "что-то пошло не так"
+    when 'already_was' then redirect_to edit_event_url, notice: 'Пользователь уже был добавлен'
+    when 'success_added' then redirect_to edit_event_url, notice: 'Пользователь успешно добавлен'
+    when 'success_create_add' then redirect_to edit_event_url, notice: 'Пользователь создан и добавлен'
+    when 'empty_field' then redirect_to edit_event_url, notice: 'Поле ввода пусто. Введите имя пользователя'
+    when 'error_name' then redirect_to edit_event_url, notice: 'Ошибка имени.'
+    else redirect_to edit_event_url, notice: 'что-то пошло не так'
     end
-
   end
 
   private
@@ -57,5 +56,4 @@ class EventsController < ApplicationController
   def event_params
     params.require(:event).permit(:title, :datetime, :decription, :event_money, :status)
   end
-
 end

@@ -1,19 +1,16 @@
 class Event < ApplicationRecord
-
   has_and_belongs_to_many :users
 
-  validates :title, presence: true, length: {maximum: 32}
+  validates :title, presence: true, length: { maximum: 32 }
   validates :datetime, presence: true
-  validates :event_money, length: {maximum: 12}
+  validates :event_money, length: { maximum: 12 }
 
   def sold!(event)
-    if event.status == true
+    unless event.status == false
       event.users.each do |user|
         user.money += (event.event_money / event.users.count).to_i
-      user.save!
+        user.save!
       end
-    else
-      nil
     end
   end
 
@@ -21,24 +18,23 @@ class Event < ApplicationRecord
     user_name_to_event = user_name_to_event.delete("_ ?!:;.,()«»<>\"\-").downcase.titleize
     u1 = User.find_by name: user_name_to_event
 
-    if u1 == nil? || user_name_to_event != ""
-      if u1 == nil
+    if u1 == nil? || user_name_to_event != ''
+      if u1.nil?
         user = User.new
         user.name = user_name_to_event
         if user.valid?
           user.save!
           event.users << user
-          "success_create_add"
+          'success_create_add'
         end
-      elsif User.exists?(:name => user_name_to_event) && ((event.users.find_by name: user_name_to_event) == nil)
+      elsif User.exists?(name: user_name_to_event) && (event.users.find_by name: user_name_to_event).nil?
         event.users << u1
-        "success_added"
+        'success_added'
       else
-        "already_was"
+        'already_was'
       end
     else
-      "error_name"
+      'error_name'
     end
   end
-
 end

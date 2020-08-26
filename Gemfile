@@ -17,15 +17,15 @@ gem 'rubocop-rails', require: false
 
 # gems for_heroku
 
-gem 'uglifier', '~> 2.7', '>= 2.7.2'
 gem 'rails_12factor'
+gem 'uglifier', '~> 2.7', '>= 2.7.2'
 
 group :production do
   gem 'pg'
 end
 
 group :development, :test do
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'sqlite3', '~> 1.4'
 end
 
