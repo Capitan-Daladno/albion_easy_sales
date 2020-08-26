@@ -18,7 +18,7 @@ class Event < ApplicationRecord
   end
 
   def add_user_to_event(event, user_name_to_event)
-    user_name_to_event = user_name_to_event.delete(" ?!:;.,()«»<>\"\-").downcase.titleize
+    user_name_to_event = user_name_to_event.delete("_ ?!:;.,()«»<>\"\-").downcase.titleize
     u1 = User.find_by name: user_name_to_event
 
     if u1 == nil? || user_name_to_event != ""

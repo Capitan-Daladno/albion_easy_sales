@@ -13,6 +13,7 @@ class ApplicationController < ActionController::Base
     @users = User.all
     @events = Event.all
     @users_sorted_by_money = User.all.sort_by {|h| h[:money]  * -1}
+    @events_sorted_by_date = Event.all.sort_by { |d| -(d.datetime).to_i}
   end
 
 end
