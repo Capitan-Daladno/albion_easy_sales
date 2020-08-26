@@ -1,0 +1,6 @@
+AllCops:
+  Exclude:
+  - 'config/initializers/devise.rb'
+  - 'db/**/*'
+  - 'bin/bundle'
+  - 'node_modules/node-sass/src/**/*'

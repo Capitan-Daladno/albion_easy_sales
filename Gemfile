@@ -8,18 +8,17 @@ gem 'rails', '~> 6.0.3'
 gem 'devise'
 gem 'devise-i18n'
 
-
 gem 'twitter-bootstrap-rails'
 
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 
 gem 'bootsnap', '>= 1.4.2', require: false
+gem 'rubocop-rails', require: false
 
 # gems for_heroku
 
 gem 'uglifier', '~> 2.7', '>= 2.7.2'
 gem 'rails_12factor'
-
 
 group :production do
   gem 'pg'
