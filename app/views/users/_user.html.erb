@@ -5,7 +5,7 @@
     </div>
     <div class="col-md-2">
       <% if seller_signed_in? %>
-        <h3><%= button_to user.money, giveout_user_path(user), method: :put, class: 'btn btn-link' %></h3>
+        <h3><%= button_to user.money, giveout_user_path(user), method: :put, class: 'btn my_btn' %></h3>
       <% else %>
         <h3><%= user.money %></h3>
       <% end %>
